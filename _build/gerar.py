@@ -139,12 +139,12 @@ def card(p, n):
     oculto = " hidden" if n >= VISIVEIS else ""
     qtd = len(p["fotos"])
     return f"""<li class="card card--{p['tipo']}{' card--destaque' if n == 0 else ''}" data-tipo="{p['tipo']}" data-categoria="{p['categoria']}" data-ordem="{n}"{oculto}>
-  <button type="button" class="card__botao" data-abrir-obra="{p['id']}" aria-label="Ver {qtd} {'imagem' if qtd == 1 else 'imagens'}: {html.escape(p['nome'])}">
+  <button type="button" class="card__botao" data-abrir-obra="{p['id']}">
     <span class="card__foto"><img src="{menor}" srcset="{srcset}" sizes="(min-width: 1024px) {'62vw' if n == 0 else '31vw'}, (min-width: 640px) 48vw, 92vw" width="{capa['w']}" height="{capa['h']}" alt="" loading="{'eager' if n < 2 else 'lazy'}" decoding="async" style="aspect-ratio:{ratio}"></span>
     <span class="card__selo">{p['selo']}</span>{par}
     <span class="card__info">
       <span class="card__meta">{p['categoriaRotulo']} · {qtd} {'imagem' if qtd == 1 else 'imagens'}</span>
-      <span class="card__nome">{html.escape(p['nome'])}</span>
+      <span class="card__nome">{html.escape(p['nome'])}</span><span class="sr-only"> (abrir galeria)</span>
     </span>
     <span class="card__seta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
   </button>
